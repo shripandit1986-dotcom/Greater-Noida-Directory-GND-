@@ -67,11 +67,6 @@ def category(cat):
 def contact():
     return render_template("contact.html")
 
-# ---------------- ABOUT ----------------
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
 # ---------------- GND ----------------
 @app.route("/gnd")
 def gnd():

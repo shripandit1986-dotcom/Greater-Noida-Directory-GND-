@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Your Business- Greater Noida Directory(GND)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<section class="business-form-container">
+
+    <h1>Add Your Business</h1>
+    <p>Fill in the details below to list your business.</p>
+
+    <form method="POST">
+
+<input type="text" name="name" placeholder="Enter business name" required>
+
+<input type="text" name="owner" placeholder="Enter owner name" required>
+
+<input type="tel" name="phone" placeholder="Enter phone number" required>
+
+<input type="email" name="email" placeholder="Enter email address">
+
+<select name="category" required>
+    <option value="">Select Category</option>
+    <option value="Hospitals">🏥 Hospital</option>
+    <option value="Restaurants">🍽 Restaurant</option>
+    <option value="Education">🏫 Education</option>
+    <option value="Jobs">💼 Jobs</option>
+    <option value="Fitness">🏋 Fitness</option>
+    <option value="Real-estate">🏡 Real Estate</option>
+    <option value="Pg-Hostel">🏨 PG / Hostel</option>
+    <option value="Beauty">💇 Beauty Services</option>
+    <option value="Astrology">🔮 Astrology</option>
+    <option value="Advocate">⚖️ Advocate</option>
+    <option value="Other">🏪 Other Business</option>
+</select>
+
+<input type="text" name="city" placeholder="Enter city">
+
+<textarea name="address" placeholder="Enter complete address"></textarea>
+
+<button type="submit">Submit Business</button>
+
+</form>
+
+</section>
+
+</body>
+</html>

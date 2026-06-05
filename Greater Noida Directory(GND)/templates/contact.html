@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Greater Noida Directory(GND)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<section class="business-form-container">
+
+    <h1>Contact with us</h1>
+    <p>Fill in the details below to list your business.</p>
+
+    <form>
+
+        <label>Business Name</label>
+        <input type="text" placeholder="Enter business name" required>
+
+        <label>Owner Name</label>
+        <input type="text" placeholder="Enter owner name" required>
+
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Enter phone number" required>
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter email address">
+
+        <label>Business Category</label>
+        <select required>
+            <option value="">Select Category</option>
+            <option>🏥 Hospital</option>
+            <option>🍽 Restaurant</option>
+            <option>🏫 Education</option>
+            <option>💼 Jobs</option>
+            <option>🏋 Fitness</option>
+            <option>🏡 Real Estate</option>
+            <option>🏨 PG / Hostel</option>
+            <option>💇 Beauty Services</option>
+            <option>🔮 Astrology</option>
+            <option value="Advocate">⚖️ Advocate</option>
+            <option>🏪 Other Business</option>
+        </select>
+
+        <label>City</label>
+        <input type="text" placeholder="Enter city">
+
+        <label>Address</label>
+        <textarea placeholder="Enter complete address"></textarea>
+
+        <button type="submit">Submit Business</button>
+
+    </form>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category }} Services</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>{{ category }} Services</h1>
+
+<div class="business-grid">
+
+{% if businesses %}
+
+    {% for business in businesses %}
+
+    <div class="business-card">
+
+        <h2>{{ business.name }}</h2>
+
+        <p>👤 {{ business.owner }}</p>
+
+        <p>📞 {{ business.phone }}</p>
+
+        <p>✉️ {{ business.email }}</p>
+
+        <p>📍 {{ business.address }}</p>
+
+        <p>🏙️ {{ business.city }}</p>
+
+        <a href="tel:{{ business.phone }}" class="call-btn">
+            📞 Call Now
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>No businesses found in this category.</p>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

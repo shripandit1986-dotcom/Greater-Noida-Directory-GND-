@@ -46,7 +46,7 @@ def add_business():
         db.session.add(business)
         db.session.commit()
 
-        return redirect("/")
+        return redirect("/payment")
 
     return render_template("add-business.html")
 

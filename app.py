@@ -72,6 +72,16 @@ def contact():
 def gnd():
     return "Greater Noida Directory (GND)"
 
+# ---------------- PAYMENT ----------------
+@app.route("/payment")
+def payment():
+    return render_template("payment.html")
+
+
+@app.route("/payment-success", methods=["POST"])
+def payment_success():
+    return redirect("/")
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

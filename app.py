@@ -1,14 +1,15 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 
 # ---------------- APP ----------------
 app = Flask(__name__)
-
+app.secret_key = "gnd_super_secret_key"
 # ---------------- DATABASE ----------------
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///gnd.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
+ADMIN_PASSWORD = "PasswordProMax777"
 
 # ---------------- BUSINESS MODEL ----------------
 class Business(db.Model):
@@ -87,8 +88,26 @@ def payment():
 def payment_success():
     return "Payment Successful! Your listing is pending approval."
 
+@app.route("/admin-login", methods=["GET", "POST"])
+def admin_login():
+
+    if request.method == "POST":
+
+        password = request.form.get("password")
+
+        if password == ADMIN_PASSWORD:
+            session["admin"] = True
+            return redirect("/admin")
+
+        return "Wrong Password"
+
+    return render_template("admin-login.html")
+
 @app.route("/admin")
 def admin():
+
+    if not session.get("admin"):
+        return redirect("/admin-login")
 
     businesses = Business.query.all()
 
@@ -96,6 +115,27 @@ def admin():
         "admin.html",
         businesses=businesses
     )
+
+@app.route("/approve/<int:id>")
+def approve(id):
+
+    if not session.get("admin"):
+        return redirect("/admin-login")
+
+    business = Business.query.get_or_404(id)
+
+    business.approved = True
+
+    db.session.commit()
+
+    return redirect("/admin")
+
+@app.route("/logout")
+def logout():
+
+    session.clear()
+
+    return redirect("/")
 
 if __name__ == "__main__":
     with app.app_context():

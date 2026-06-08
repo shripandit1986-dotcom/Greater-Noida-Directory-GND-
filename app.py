@@ -56,7 +56,10 @@ def add_business():
 @app.route("/category/<cat>")
 def category(cat):
 
-    businesses = Business.query.filter_by(category=cat).all()
+    businesses = Business.query.filter_by(
+    category=cat,
+    approved=True
+).all()
 
     return render_template(
         "category.html",

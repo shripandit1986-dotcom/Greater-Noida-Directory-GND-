@@ -49,7 +49,7 @@ def add_business():
         db.session.add(business)
         db.session.commit()
 
-        return redirect("/payment")
+        return redirect("/")
 
     return render_template("add-business.html")
 
@@ -77,16 +77,6 @@ def contact():
 @app.route("/gnd")
 def gnd():
     return "Greater Noida Directory (GND)"
-
-# ---------------- PAYMENT ----------------
-@app.route("/payment")
-def payment():
-    return render_template("payment.html")
-
-
-@app.route("/payment-success", methods=["POST"])
-def payment_success():
-    return "Payment Successful! Your listing is pending approval."
 
 @app.route("/admin-login", methods=["GET", "POST"])
 def admin_login():

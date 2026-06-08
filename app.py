@@ -103,6 +103,8 @@ def admin():
 
     businesses = Business.query.all()
 
+    print("ADMIN BUSINESSES:", len(businesses))
+
     return render_template(
         "admin.html",
         businesses=businesses

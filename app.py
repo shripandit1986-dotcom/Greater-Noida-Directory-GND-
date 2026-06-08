@@ -139,6 +139,11 @@ def test():
         output += f"{b.id} - {b.name}<br>"
 
     return output
+
+@app.route("/count")
+def count():
+    return str(Business.query.count())
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

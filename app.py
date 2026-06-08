@@ -23,7 +23,7 @@ class Business(db.Model):
     address = db.Column(db.String(200))
 
     paid = db.Column(db.Boolean, default=False)
-
+    approved = db.Column(db.Boolean, default=False)
 # ---------------- HOME ----------------
 @app.route("/")
 def home():
@@ -82,7 +82,7 @@ def payment():
 
 @app.route("/payment-success", methods=["POST"])
 def payment_success():
-    return redirect("/")
+    return "Payment Successful! Your listing is pending approval."
 
 if __name__ == "__main__":
     with app.app_context():

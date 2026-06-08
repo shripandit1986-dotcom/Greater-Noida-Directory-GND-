@@ -126,6 +126,17 @@ def logout():
 
     return redirect("/")
 
+@app.route("/test")
+def test():
+    businesses = Business.query.all()
+
+    text = ""
+
+    for b in businesses:
+        text += f"{b.id} - {b.name}<br>"
+
+    return text
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

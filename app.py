@@ -87,6 +87,16 @@ def payment():
 def payment_success():
     return "Payment Successful! Your listing is pending approval."
 
+@app.route("/admin")
+def admin():
+
+    businesses = Business.query.all()
+
+    return render_template(
+        "admin.html",
+        businesses=businesses
+    )
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

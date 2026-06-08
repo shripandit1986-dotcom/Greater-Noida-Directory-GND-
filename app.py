@@ -23,7 +23,6 @@ class Business(db.Model):
     city = db.Column(db.String(100))
     address = db.Column(db.String(200))
 
-    paid = db.Column(db.Boolean, default=False)
     approved = db.Column(db.Boolean, default=False)
 # ---------------- HOME ----------------
 @app.route("/")

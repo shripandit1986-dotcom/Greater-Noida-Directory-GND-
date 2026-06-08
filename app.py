@@ -130,13 +130,15 @@ def logout():
 def test():
     businesses = Business.query.all()
 
-    text = ""
+    if not businesses:
+        return "No businesses found"
+
+    output = ""
 
     for b in businesses:
-        text += f"{b.id} - {b.name}<br>"
+        output += f"{b.id} - {b.name}<br>"
 
-    return text
-
+    return output
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

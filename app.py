@@ -47,6 +47,7 @@ def add_business():
 
         db.session.add(business)
         db.session.commit()
+        print("BUSINESS SAVED:", business.name)
 
         return redirect("/")
 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel - GND</title>
+</head>
+<body>
+
+<h1>Pending Businesses</h1>
+
+{% for business in businesses %}
+
+<div style="border:1px solid #ccc; padding:10px; margin:10px;">
+    <h3>{{ business.name }}</h3>
+
+    <p>Owner: {{ business.owner }}</p>
+    <p>Phone: {{ business.phone }}</p>
+    <p>Category: {{ business.category }}</p>
+    <p>City: {{ business.city }}</p>
+
+    {% if not business.approved %}
+        <a href="/approve/{{ business.id }}">
+            Approve Business
+        </a>
+    {% else %}
+        <b>Approved ✅</b>
+    {% endif %}
+</div>
+
+{% endfor %}
+
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+</html>

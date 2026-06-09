@@ -87,6 +87,7 @@ def admin_login():
     if request.method == "POST":
 
         password = request.form.get("password")
+        print("PASSWORD ENTERED:", password)
 
         if password == ADMIN_PASSWORD:
             session["admin"] = True

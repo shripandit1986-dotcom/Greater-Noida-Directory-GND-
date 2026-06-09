@@ -151,6 +151,12 @@ def test():
 def count():
     return str(Business.query.count())
 
+@app.route("/init-db")
+def init_db():
+    with app.app_context():
+        db.create_all()
+    return "DB CREATED"
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

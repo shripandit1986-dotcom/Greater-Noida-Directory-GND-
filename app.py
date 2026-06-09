@@ -149,8 +149,7 @@ def test():
 def count():
     return str(Business.query.count())
 
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
+import os
 
-    app.run(host="0.0.0.0", port=10000)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))

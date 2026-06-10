@@ -150,6 +150,11 @@ def test():
 def count():
     return str(Business.query.count())
 
+@app.route("/db-path")
+def db_path():
+    import os
+    return os.path.abspath("gnd.db")
+
 @app.route("/init-db")
 def init_db():
     with app.app_context():

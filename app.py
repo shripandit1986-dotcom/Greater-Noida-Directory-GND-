@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = "gnd_super_secret_key_2026"
 
 # --------------DATABASE ----------------
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///gnd.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)

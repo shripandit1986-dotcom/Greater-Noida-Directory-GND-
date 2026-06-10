@@ -152,6 +152,11 @@ def test():
 def count():
     return str(Business.query.count())
 
+@app.route("/env-test")
+def env_test():
+    import os
+    return str(os.getenv("DATABASE_URL"))
+
 @app.route("/db-path")
 def db_path():
     import os

@@ -35,6 +35,8 @@ class Business(db.Model):
     category = db.Column(db.String(100))
     city = db.Column(db.String(100))
     address = db.Column(db.String(200))
+    gstin = db.Column(db.String(20))
+description = db.Column(db.Text)
 
     approved = db.Column(db.Boolean, default=False)
 # ---------------- HOME ----------------

@@ -35,8 +35,9 @@ class Business(db.Model):
     category = db.Column(db.String(100))
     city = db.Column(db.String(100))
     address = db.Column(db.String(200))
+    
     gstin = db.Column(db.String(20))
-description = db.Column(db.Text)
+    description = db.Column(db.Text)
 
     approved = db.Column(db.Boolean, default=False)
 # ---------------- HOME ----------------
@@ -51,15 +52,16 @@ def add_business():
     if request.method == "POST":
 
         business = Business(
-            name=request.form.get("name"),
-            owner=request.form.get("owner"),
-            phone=request.form.get("phone"),
-            email=request.form.get("email"),
-            category=request.form.get("category"),
-            city=request.form.get("city"),
-            address=request.form.get("address")
-        )
-
+    name=request.form.get("name"),
+    owner=request.form.get("owner"),
+    phone=request.form.get("phone"),
+    email=request.form.get("email"),
+    category=request.form.get("category"),
+    city=request.form.get("city"),
+    address=request.form.get("address"),
+    gstin=request.form.get("gstin"),
+    description=request.form.get("description")
+)
         db.session.add(business)
         db.session.commit()
         print("BUSINESS SAVED:", business.name)

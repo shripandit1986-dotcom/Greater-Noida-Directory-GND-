@@ -18,7 +18,7 @@
    <div class="business-card">
 
     {% if business.image %}
-        <img src="{{ url_for('static', filename='uploads/' + business.image) }}"
+        <img src="{{ url_for('static', filename='uploads/' + business.image) }}" width="200">
              alt="{{ business.name }}"
              class="business-image">
     {% endif %}

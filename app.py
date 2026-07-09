@@ -181,6 +181,22 @@ def init_db():
         db.create_all()
     return "DB CREATED"
 
+from sqlalchemy import text
+
+@app.route("/update-db")
+def update_db():
+    db.session.execute(text(
+        "ALTER TABLE business ADD COLUMN IF NOT EXISTS gstin VARCHAR(20);"
+    ))
+
+    db.session.execute(text(
+        "ALTER TABLE business ADD COLUMN IF NOT EXISTS description TEXT;"
+    ))
+
+    db.session.commit()
+
+    return "Database Updated Successfully!"
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

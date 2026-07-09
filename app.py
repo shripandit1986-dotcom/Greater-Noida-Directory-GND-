@@ -38,7 +38,7 @@ class Business(db.Model):
     
     gstin = db.Column(db.String(20))
     description = db.Column(db.Text)
-
+    image = db.Column(db.String(200))
     approved = db.Column(db.Boolean, default=False)
 # ---------------- HOME ----------------
 @app.route("/")

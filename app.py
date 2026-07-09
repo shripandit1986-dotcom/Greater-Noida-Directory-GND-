@@ -52,6 +52,17 @@ def add_business():
 
     if request.method == "POST":
 
+    image = request.files.get("image")
+
+filename = None
+
+if image and image.filename != "":
+    filename = secure_filename(image.filename)
+
+    image.save(
+        os.path.join("static", "uploads", filename)
+    )
+
         business = Business(
     name=request.form.get("name"),
     owner=request.form.get("owner"),

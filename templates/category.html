@@ -15,9 +15,15 @@
 
     {% for business in businesses %}
 
-    <div class="business-card">
+   <div class="business-card">
 
-        <h2>{{ business.name }}</h2>
+    {% if business.image %}
+        <img src="{{ url_for('static', filename='uploads/' + business.image) }}"
+             alt="{{ business.name }}"
+             class="business-image">
+    {% endif %}
+
+    <h2>{{ business.name }}</h2>
 
         <p>👤 {{ business.owner }}</p>
 

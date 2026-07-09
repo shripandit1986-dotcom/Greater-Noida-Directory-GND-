@@ -52,30 +52,35 @@ def add_business():
 
     if request.method == "POST":
 
-    image = request.files.get("image")
+        image = request.files.get("image")
 
-filename = None
+        filename = None
 
-if image and image.filename != "":
-    filename = secure_filename(image.filename)
+        if image and image.filename != "":
+            filename = secure_filename(image.filename)
 
-    image.save(
-        os.path.join("static", "uploads", filename)
-    )
+            os.makedirs(os.path.join("static", "uploads"), exist_ok=True)
+
+            image.save(
+                os.path.join("static", "uploads", filename)
+            )
 
         business = Business(
-    name=request.form.get("name"),
-    owner=request.form.get("owner"),
-    phone=request.form.get("phone"),
-    email=request.form.get("email"),
-    category=request.form.get("category"),
-    city=request.form.get("city"),
-    address=request.form.get("address"),
-    gstin=request.form.get("gstin"),
-    description=request.form.get("description")
-)
+            name=request.form.get("name"),
+            owner=request.form.get("owner"),
+            phone=request.form.get("phone"),
+            email=request.form.get("email"),
+            category=request.form.get("category"),
+            city=request.form.get("city"),
+            address=request.form.get("address"),
+            gstin=request.form.get("gstin"),
+            description=request.form.get("description"),
+            image=filename
+        )
+
         db.session.add(business)
         db.session.commit()
+
         print("BUSINESS SAVED:", business.name)
 
         return redirect("/")

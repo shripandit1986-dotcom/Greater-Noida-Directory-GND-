@@ -13,7 +13,7 @@
     <h1>Add Your Business</h1>
     <p>Fill in the details below to list your business.</p>
 
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
 
 <input type="text" name="name" placeholder="Enter business name" required>
 
@@ -57,6 +57,13 @@
           name="description"
           placeholder="Enter Description of Your Business">
 </textarea>
+
+        <label>Business Image / Logo</label>
+
+<input
+type="file"
+name="image"
+accept="image/*">
 
 <button type="submit">Submit Business</button>
 

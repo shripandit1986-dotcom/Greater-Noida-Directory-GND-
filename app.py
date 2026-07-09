@@ -210,6 +210,10 @@ def update_db():
         "ALTER TABLE business ADD COLUMN IF NOT EXISTS description TEXT;"
     ))
 
+    db.session.execute(text(
+        "ALTER TABLE business ADD COLUMN IF NOT EXISTS image VARCHAR(200);"
+    ))
+
     db.session.commit()
 
     return "Database Updated Successfully!"

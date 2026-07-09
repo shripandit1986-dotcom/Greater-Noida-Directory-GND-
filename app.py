@@ -58,18 +58,13 @@ def add_business():
 
     if request.method == "POST":
 
-        image = request.files.get("image")
+       image = request.files.get("image")
 
-        filename = None
+image_url = None
 
-        if image and image.filename != "":
-            filename = secure_filename(image.filename)
-
-            os.makedirs(os.path.join("static", "uploads"), exist_ok=True)
-
-            image.save(
-                os.path.join("static", "uploads", filename)
-            )
+if image and image.filename != "":
+    upload_result = cloudinary.uploader.upload(image)
+    image_url = upload_result["secure_url"]
 
         business = Business(
             name=request.form.get("name"),

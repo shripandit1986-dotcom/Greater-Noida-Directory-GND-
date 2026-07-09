@@ -47,7 +47,7 @@ class Business(db.Model):
     
     gstin = db.Column(db.String(20))
     description = db.Column(db.Text)
-    image = db.Column(db.String(200))
+    image = db.Column(db.Text)
     approved = db.Column(db.Boolean, default=False)
 # ---------------- HOME ----------------
 @app.route("/")
@@ -60,13 +60,13 @@ def add_business():
 
     if request.method == "POST":
 
-       image = request.files.get("image")
+        image = request.files.get("image")
 
-image_url = None
+        image_url = None
 
-if image and image.filename != "":
-    upload_result = cloudinary.uploader.upload(image)
-    image_url = upload_result["secure_url"]
+        if image and image.filename != "":
+            upload_result = cloudinary.uploader.upload(image)
+            image_url = upload_result["secure_url"]
 
         business = Business(
             name=request.form.get("name"),
@@ -78,13 +78,11 @@ if image and image.filename != "":
             address=request.form.get("address"),
             gstin=request.form.get("gstin"),
             description=request.form.get("description"),
-            image=filename
+            image=image_url
         )
 
         db.session.add(business)
         db.session.commit()
-
-        print("BUSINESS SAVED:", business.name)
 
         return redirect("/")
 

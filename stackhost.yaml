@@ -3,8 +3,9 @@ runtime:
 
 commands:
   package: ""
-  build: []
-  start: "python --version"
+  build:
+    - "pip install -r requirements.txt"
+  start: "python app.py"
 
 repository:
   branch: main

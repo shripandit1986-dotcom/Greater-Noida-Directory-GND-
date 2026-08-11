@@ -1,12 +1,11 @@
 runtime:
-  image: python:3.12
+  image: python:3.11
 
 commands:
   package: ""
-  build:
-    - "pip install -r requirements.txt"
-  start: "python app.py"
+  build: []
+  start: "python --version"
 
 repository:
   branch: main
-  auto_deploy: true
+  auto_deploy: false

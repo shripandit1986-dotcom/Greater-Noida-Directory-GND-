@@ -5,7 +5,7 @@ commands:
   package: ""
   build:
     - "pip install -r requirements.txt"
-  start: gunicorn app:app
+  start: "python app.py"
 
 repository:
   branch: main

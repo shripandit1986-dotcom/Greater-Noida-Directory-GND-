@@ -2,10 +2,9 @@ runtime:
   image: python:3.12
 
 commands:
-  package: ""
-  build:
-    - "pip install -r requirements.txt"
-  start: "gunicorn app:app"
+  package: "pip install -r requirements.txt"
+  build: []
+  start: "python app.py"
 
 repository:
   branch: main

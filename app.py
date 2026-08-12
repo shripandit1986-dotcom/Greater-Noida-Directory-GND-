@@ -56,7 +56,7 @@ class Business(db.Model):
 # ---------------- HOME ----------------
 @app.route("/")
 def home():
-    return "GND IS ALIVE 🚀"
+    return render_template("index.html")
 # ---------------- ADD BUSINESS ----------------
 @app.route("/add-business", methods=["GET", "POST"])
 def add_business():

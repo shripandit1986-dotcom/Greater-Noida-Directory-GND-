@@ -10,3 +10,6 @@ commands:
 repository:
   branch: main
   auto_deploy: true
+
+env:
+  - PORT:3000
